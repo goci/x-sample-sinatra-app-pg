@@ -1,12 +1,15 @@
 require 'rake/testtask'
 
-desc "Run all tests"
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList['test/*_test.rb']
-  t.verbose = true
+namespace :test do
+  %w(units functionals).each do |dir|
+    desc "Run all tests in #{dir}"
+    Rake::TestTask.new(dir) do |t|
+      t.libs << "test"
+      t.test_files = FileList["test/#{dir}/*_test.rb"]
+      t.verbose = true
+    end
+  end
 end
-
 
 task :default => :test
 
