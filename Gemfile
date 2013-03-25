@@ -1,14 +1,6 @@
 source 'https://rubygems.org'
 
+# Specify your gem's dependencies in foo.gemspec
+gemspec
+
 ruby '1.9.3'
-
-gem 'sinatra'
-
-group :development, :test do
-  gem 'sqlite3'
-  gem 'rake'
-end
-
-group :production do
-  gem 'pg'
-end
